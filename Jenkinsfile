@@ -1,7 +1,6 @@
 gv = load "script.groovy"
 
 pipeline {
-    
     agent any
     parameters {
         choice(name: 'VERSION', choices: ['1.1.0', '1.2.0', '1.3.0'], description: '')
@@ -9,13 +8,10 @@ pipeline {
     }
 
     stages {
-
         stage("build") {
-
             steps {
-
                 script {
-                    gv.buidApp()
+                    gv.buildApp()
                 }
             }
         }
@@ -27,7 +23,6 @@ pipeline {
                 }
             }
             steps {
-
                 script {
                     gv.testApp()
                 }
@@ -35,14 +30,11 @@ pipeline {
         }
 
         stage("deploy") {
-
             steps {
-
                 script {
                     gv.deployApp(params.VERSION)
                 }
             }
         }
     }
-
 }
