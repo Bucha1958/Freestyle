@@ -6,9 +6,9 @@ def testApp () {
     echo 'testing the application...'
 }
 
-def deployApp () {
+def deployApp (version) {
     echo 'Deploying the application...'
-    echo "deploying version ${params.VERSION}"
+    echo "deploying version ${version}"
 }
 
 return this
