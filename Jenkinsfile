@@ -1,4 +1,4 @@
-gv = load "script.groovy"
+
 
 pipeline {
     agent any
@@ -8,6 +8,16 @@ pipeline {
     }
 
     stages {
+
+        stage("Load Groovy Script") {
+            steps {
+                script {
+                    node {
+                        gv = load "script.groovy"
+                    }
+                }
+            }
+        }
         stage("build") {
             steps {
                 script {
