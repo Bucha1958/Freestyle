@@ -17,9 +17,9 @@ pipeline {
                 script {
                     echo "building the docker image..."
                     withCredentials([usernamePassword(credentialsId: 'dockerhub-credentials', usernameVariable: 'USER', passwordVariable: 'PWD')]) {
-                        sh 'docker build -t bucha1958/pipeline_app:jma-2.0 .'
-                        sh "echo $PWD | docker login -u $USER --password-stdin"
-                        sh 'docker push bucha1958/pipeline_app:jma-2.0'
+                        sh 'sudo docker build -t bucha1958/pipeline_app:jma-2.0 .'
+                        sh "sudo echo $PWD | sudo docker login -u $USER --password-stdin"
+                        sh 'sudo docker push bucha1958/pipeline_app:jma-2.0'
                     }
                 }
             }
@@ -33,3 +33,4 @@ pipeline {
         }
     }
 }
+
